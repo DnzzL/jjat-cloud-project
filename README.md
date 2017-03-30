@@ -1,1 +1,2 @@
-# jjat-cloud-project
+# Cloud technologies
+## Assignment 2
