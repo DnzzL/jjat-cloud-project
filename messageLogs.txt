@@ -1,0 +1,15 @@
+2017.04.03 12:29:22 | SERVER>>> Connection Successful
+2017.04.03 12:29:32 | CLIENT>>> Hello from Client1
+2017.04.03 12:29:41 | SERVER>>> Hello
+2017.04.03 12:29:45 | CLIENT>>> Goodbye
+2017.04.03 12:29:47 | CLIENT>>> TERMINATE
+2017.04.03 12:29:47 | SERVER>>> Connection Successful
+2017.04.03 12:29:55 | CLIENT>>> Hello from Client2
+2017.04.03 12:29:58 | SERVER>>> Hello
+2017.04.03 12:30:01 | CLIENT>>> Goodbye
+2017.04.03 12:30:03 | CLIENT>>> TERMINATE
+2017.04.03 12:30:08 | SERVER>>> Connection Successful
+2017.04.03 12:30:15 | CLIENT>>> Hello from Client3
+2017.04.03 12:30:19 | SERVER>>> Hello
+2017.04.03 12:30:45 | CLIENT>>> This is the end of a single run of the Server Client chat system, with 3 Clients who connected
+2017.04.03 12:30:48 | CLIENT>>> TERMINATE
