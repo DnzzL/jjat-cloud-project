@@ -12,6 +12,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+<<<<<<< HEAD
+=======
+import java.io.PrintWriter;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.File;
+import java.util.*;
+import java.text.*;
+
+>>>>>>> Jen
 
 public class Server extends JFrame{
 	private JTextField enterField; //imputs message from user
@@ -21,6 +31,13 @@ public class Server extends JFrame{
 	private ServerSocket server; //server socket
 	private Socket connection; //connection to client
 	private int counter = 1; //number of connections
+<<<<<<< HEAD
+=======
+	PrintWriter textLogs;
+	DateFormat date;
+	Date dNow;
+	SimpleDateFormat ft = new SimpleDateFormat ("yyyy.MM.dd hh:mm:ss ");
+>>>>>>> Jen
 
 	//Setting up simple GUI
 	public Server(){
@@ -52,12 +69,26 @@ public class Server extends JFrame{
 
 			while(true){
 				try{
+<<<<<<< HEAD
+=======
+					textLogs = new PrintWriter(new BufferedWriter(new FileWriter("messageLogs.txt", true)));
+				}catch(IOException e){
+					System.out.println("Couldn't open file");
+				}
+				try{
+>>>>>>> Jen
 					waitForConnection();
 					getStreams();
 					processConnection();
 				}
+<<<<<<< HEAD
 				catch(EOFException eofException){ displayMessage("\nServer terminated connection"); }
 				
+=======
+				catch(EOFException eofException){
+					displayMessage("\nServer terminated connection");
+				}
+>>>>>>> Jen
 				finally{
 					closeConnection();
 					++counter;
@@ -83,7 +114,11 @@ public class Server extends JFrame{
 
 	//Process connection
 	private void processConnection() throws IOException{
+<<<<<<< HEAD
 		String message = "Connection Sucessful";
+=======
+		String message = "Connection Successful";
+>>>>>>> Jen
 		sendData(message);
 		setTextFieldEditable(true);
 		//Check message is in string format
@@ -91,10 +126,19 @@ public class Server extends JFrame{
 			try{
 				message = (String) input.readObject();
 				displayMessage("\n"+message);
+<<<<<<< HEAD
+=======
+				dNow = new Date( );
+				textLogs.println(ft.format(dNow) + "| "+message);
+>>>>>>> Jen
 			}catch(ClassNotFoundException classNotFoundException){
 				displayMessage("\n Unknown message format. Please use basic String text\n");
 			}
 		}while(!message.equals("CLIENT>>> TERMINATE"));
+<<<<<<< HEAD
+=======
+		message = "";
+>>>>>>> Jen
 	}
 
 	//close streams and sockets.
@@ -106,6 +150,10 @@ public class Server extends JFrame{
 			output.close();
 			input.close();
 			connection.close();
+<<<<<<< HEAD
+=======
+			textLogs.close();
+>>>>>>> Jen
 		}catch(IOException ioException){
 			ioException.printStackTrace();
 		}
@@ -115,6 +163,11 @@ public class Server extends JFrame{
 	private void sendData(String message){
 		try{
 			output.writeObject("SERVER>>> "+message);
+<<<<<<< HEAD
+=======
+			dNow = new Date( );
+			textLogs.println(ft.format(dNow) + "| SERVER>>> "+message);
+>>>>>>> Jen
 			output.flush();
 			displayMessage("\nSERVER>>> "+message);
 		}catch(IOException ioException){
@@ -143,6 +196,7 @@ public class Server extends JFrame{
 		);
 	}
 }
+<<<<<<< HEAD
 
 
 
@@ -180,3 +234,5 @@ public class Server extends JFrame{
 
 
 
+=======
+>>>>>>> Jen
