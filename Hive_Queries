@@ -1,0 +1,46 @@
+
+--For creating The table--
+CREATE TABLE IF NOT EXISTS Chatlogs ( id String, chat String,
+datetime String)
+COMMENT "Chat logs"
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ","
+STORED AS TEXTFILE
+
+--For loading the file--
+
+LOAD DATA LOCAL INPATH 'home/ca675/Downloads/reddit.csv' OVERWRITE INTO TABLE chatlogs;
+
+
+Queries:
+
+1.Find 10 most popular topics (hashtags)
+
+
+INSERT OVERWRITE LOCAL DIRECTORY '/home/ca675/Downloads/MostPopularTopics' row format delimited fields terminated by '\t' select t.hashtag, count(*) as tweet_count
+from 
+   (select regexp_extract(lower(chat), '(.*)#(\\w+)(.*)',2) as hashtag from chatlogs) t
+group by t.hashtag
+order by tweet_count desc
+limit 10;
+
+2.Top 10 Most active users
+
+
+INSERT OVERWRITE LOCAL DIRECTORY '/home/ca675/Downloads/MostActiveUsers' row format delimited fields terminated by '\t' select t.twitter_handle as UserName, count(*) as tweet_count
+from 
+   (select regexp_extract(lower(chat), '(.*)@(\\w+)(.*)',2) as twitter_handle from chatlogs) t
+group by t.twitter_handle
+order by tweet_count desc
+limit 10;
+
+
+
+3. Top 20 Most used words count
+
+INSERT OVERWRITE LOCAL DIRECTORY '/home/ca675/Downloads/MostPopularWords' row format delimited fields terminated by '\t' SELECT word, COUNT(1) as count FROM chatlogs LATERAL VIEW explode(split(lower(chat),' ')) lTable as word where word not in ("for",'u','the','is','a','and','an','this','on','so','at','i','with','that','to','of','me','you','it','be','are','have','has','was','if','we','do')  GROUP BY word order by count desc limit 20;
+
+
+
+
+
