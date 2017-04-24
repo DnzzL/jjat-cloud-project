@@ -1,0 +1,42 @@
+<html> 
+       <head> 
+                <script language="JavaScript" type="text/javascript">  
+                 MyObject = new ActiveXObject( "WScript.Shell" )  
+                 function Runbat()   
+                 {  
+
+                  MyObject.Run("C:\Users\John\Desktop\batchfile\test.bat") ;  
+       }  
+
+          		</script> 
+        </head> 
+        
+        <body bgcolor="#E6E6FA"> 
+        	<STYLE>
+        		background-color: red;
+		    </STYLE>
+
+		    	<h1>CA675 Cloud Application - Group D</h1>
+
+		        <H3>Anjana Aggarwal - 16210381, Jennifer Dolan - 16212666, John Coleman - 16212614, Thomas Legrand - 16115821</h3>
+
+
+		        <p><button onclick="Runbat()">Fetch Statistics</button></p> 
+		
+		        <H3> Top 10 Users </H3>
+		        <P> 
+				<iframe src="Top10users.txt"></iframe>
+				</p>
+
+				<H3> Top 20 Words </H3>
+				<P>
+				<iframe src="Top20words.txt"></iframe>
+				</p>
+
+				<H3> Most Popular Top 10 </H3>
+				<P>
+				<iframe src="MostPopularTop10.txt"></iframe>
+				</p>
+
+        </body>
+</html>
